@@ -152,7 +152,10 @@ class _CarNumberKeyboardState extends State<CarNumberKeyboard> {
             height: double.infinity,
             width: double.infinity,
             child: text == mDelete ?
-            Image.asset("lib/images/icon_rollback.png" , width: 23 , height: 17,):
+            Text('删除', style:
+              TextStyle(color: text == 'I' ? Color(0XFFB7BABC) : color_00131D
+                  , fontSize: (18)),
+            ):
             Text(text, style:
               TextStyle(color: text == 'I' ? Color(0XFFB7BABC) : color_00131D
                   , fontSize: (18)),
