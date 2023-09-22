@@ -12,7 +12,6 @@ void main() => runApp(const MyApp());
 
 ValueNotifier<String> mCarNumber = ValueNotifier('');
 
-
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -40,67 +39,64 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: color_00131D,
-      body: Column(
-        children: [
-          SizedBox(height: 20,),
+    return Container();
+    // return Scaffold(
+    //   backgroundColor: color_00131D,
+    //   body: Column(
+    //     children: [
+    //       SizedBox(height: 20,),
 
-          ValueListenableBuilder<String>(
-            valueListenable: mCarNumber,
-            builder: (BuildContext context, value, Widget? child) {
-              return
-              ButtonView(() {
-              }, '当前号码： $value');
-            },
-          ),
+    //       ValueListenableBuilder<String>(
+    //         valueListenable: mCarNumber,
+    //         builder: (BuildContext context, value, Widget? child) {
+    //           return
+    //           ButtonView(() {
+    //           }, '当前号码： $value');
+    //         },
+    //       ),
 
+    //       ButtonView(() {
+    //         openCarNumberViewDialog(context, mCarNumber.value);
+    //       }, "底部弹框-车牌号"),
 
-          ButtonView(() {
-            openCarNumberViewDialog(context, mCarNumber.value);
-          }, "底部弹框-车牌号"),
+    //       ButtonView(() {
+    //         openCarNumberViewDialogNew(context, mCarNumber.value);
+    //       }, "底部弹框(可选择焦点)-车牌号"),
 
-          ButtonView(() {
-            openCarNumberViewDialogNew(context, mCarNumber.value);
-          }, "底部弹框(可选择焦点)-车牌号"),
+    //       ButtonView(() {
+    //         openCarNumberKeyboardRoute(context, mCarNumber.value , (n , t){
+    //           mCarNumber.value = n;
+    //           if(t == "完成"){
+    //             Navigator.pop(context);
+    //           }
+    //         });
+    //       }, "键盘弹框页面"),
 
-          ButtonView(() {
-            openCarNumberKeyboardRoute(context, mCarNumber.value , (n , t){
-              mCarNumber.value = n;
-              if(t == "完成"){
-                Navigator.pop(context);
-              }
-            });
-          }, "键盘弹框页面"),
+    //       ButtonView(() {
+    //         openAddCarNumberRoute(context , mCarNumber.value);
+    //       }, "新页面添加车牌号"),
 
-          ButtonView(() {
-            openAddCarNumberRoute(context , mCarNumber.value);
-          }, "新页面添加车牌号"),
-
-          ButtonView(() {
-            CarNumberViewOverlay.getInstance().showKeyboard(context, (carNumber, value) {
-              mCarNumber.value = carNumber;
-              if(value == "完成"){
-                CarNumberViewOverlay.getInstance().hideKeyboard();
-              }
-            });
-          }, "悬浮框键盘"),
-        ],
-      ),
-    );
+    //       ButtonView(() {
+    //         CarNumberViewOverlay.getInstance().showKeyboard(context, (carNumber, value) {
+    //           mCarNumber.value = carNumber;
+    //           if(value == "完成"){
+    //             CarNumberViewOverlay.getInstance().hideKeyboard();
+    //           }
+    //         });
+    //       }, "悬浮框键盘"),
+    //     ],
+    //   ),
+    // );
   }
 
-  Widget ButtonView(GestureTapCallback? tap,String? t){
+  Widget ButtonView(GestureTapCallback? tap, String? t) {
     return InkWell(
       onTap: tap,
       child: Container(
@@ -109,11 +105,9 @@ class _MyHomePageState extends State<MyHomePage> {
         height: 40,
         width: ScreenUtils.getScreenWidth(context),
         decoration: BoxDecoration(
-            color: color_fff,
-            borderRadius: BorderRadius.circular(5)
-        ),
+            color: color_fff, borderRadius: BorderRadius.circular(5)),
         child: Text(
-          t??"-",
+          t ?? "-",
         ),
       ),
     );
